@@ -5,6 +5,7 @@ export default {
     enabled: true,
     cloudflareToken: process.env.CLOUDFLARE_API_TOKEN,
     cloudflareZoneId: process.env.CLOUDFLARE_ZONE_ID,
+    cloudflarePurgeHostname: process.env.CLOUDFLARE_PURGE_HOSTNAME,
     uids: [],
   },
   validator(config: CloudflareCachePluginConfig) {

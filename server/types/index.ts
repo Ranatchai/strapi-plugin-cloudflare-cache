@@ -2,7 +2,9 @@ export interface CloudflareCachePluginConfig {
   enabled: boolean;
   cloudflareToken: string;
   cloudflareZoneId: string;
+  cloudflarePurgeHostname?: string;
   models: string[];
+  uids: string[];
 }
 
 export interface CloudflareResponse {
