@@ -3,7 +3,9 @@
 
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "."
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "types": ["node"]
   },
 
   "include": [

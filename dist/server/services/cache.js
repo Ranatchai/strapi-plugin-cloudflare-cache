@@ -8,15 +8,18 @@ exports.default = ({ strapi }) => ({
     async purgeCache() {
         const config = strapi.config.get('plugin.strapi-plugin-cloudflare-cache');
         try {
+            const purgeBody = config.cloudflarePurgeHostname ? {
+                hosts: [config.cloudflarePurgeHostname],
+            } : {
+                purge_everything: true,
+            };
             const response = await (0, node_fetch_1.default)(`https://api.cloudflare.com/client/v4/zones/${config.cloudflareZoneId}/purge_cache`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${config.cloudflareToken}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    purge_everything: true,
-                })
+                body: JSON.stringify(purgeBody)
             });
             const data = await response.json();
             if (!data.success) {
@@ -25,7 +28,7 @@ exports.default = ({ strapi }) => ({
                 });
                 return false;
             }
-            strapi.log.info('Successfully purged Cloudflare cache');
+            strapi.log.info('Successfully purged Cloudflare cache', purgeBody);
             return true;
         }
         catch (error) {

@@ -14,7 +14,9 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
+    "@strapi/strapi": "^4.6.0",
     "@strapi/typescript-utils": "^4.6.0",
+    "@types/minimatch": "^6.0.0",
     "@types/react": "^17.0.53",
     "@types/react-dom": "^18.0.28",
     "@types/react-router-dom": "^5.3.3",
@@ -44,5 +46,6 @@
     "develop": "tsc -p tsconfig.server.json -w",
     "build": "tsc -p tsconfig.server.json"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }
